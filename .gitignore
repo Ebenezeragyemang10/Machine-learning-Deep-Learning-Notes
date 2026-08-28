@@ -1,0 +1,51 @@
+#  Models
+*.pth
+*.pt
+*.onnx
+*.ckpt
+*.bin
+*.pkl
+
+#environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.env
+
+#large datasets
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.csv
+*.h5
+*.hdf5
+*.parquet
+*.npz
+*.npy
+
+
+# Specific Dataset Directories
+rps-test-set/
+data/
+datasets/
+dataset/
+raw_data/
+processed_data/
+
+# Image datasets 
+*.png
+*.jpeg
+*.jpg
+
+#system files
+.vscode/
+.idea/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
