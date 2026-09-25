@@ -1,8 +1,6 @@
 from torch.utils.data import DataLoader, random_split
 from torchvision.datasets import ImageFolder
-import os
 
-NUM_WORKERS = os.cpu_count()
 def create_dataloaders(
     
     train_dir,
@@ -10,7 +8,7 @@ def create_dataloaders(
     batch_size,
     train_transform,
     test_transform,
-    num_workers=NUM_WORKERS):
+    ):
     """
     args: 
         train_dir -> train data path
@@ -24,14 +22,13 @@ def create_dataloaders(
 
     """
     
-    
-    test_data = ImageFolder(train_dir, transform=test_transform)
-    train_dataset = ImageFolder(test_dir, transform=train_transform)
+    train_dataset = ImageFolder(train_dir, transform=train_transform)
+    test_data = ImageFolder(test_dir, transform=test_transform)
     test_dataset, validation_dataset = random_split(test_data, [272, 100])
     
-    train_loader = DataLoader(train_dataset, batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)
-    test_loader = DataLoader(test_dataset, batch_size, shuffle=False, num_workers=num_workers, pin_memory=True )
-    validation_loader = DataLoader(validation_dataset, batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, )
+    test_loader = DataLoader(test_dataset, batch_size=batch_size//2, shuffle=False )
+    validation_loader = DataLoader(validation_dataset, batch_size=batch_size//2, shuffle=False)
     
     return train_loader, test_loader, validation_loader
     
